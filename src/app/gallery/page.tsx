@@ -1,38 +1,36 @@
-'use client'
+import { CldImage } from "next-cloudinary"
+import UplaodButton from "./uplaod-button"
+import cloudinary from 'cloudinary'
+import { CloudinaryImage } from "./cloudinary-image"
 
-import { CldUploadButton } from "next-cloudinary"
-import { UploadResult } from "../page"
-import { Button } from "@/components/ui/button"
-import { buttonVariants } from "@/components/ui/button"
+type SearchResult = {
+    public_id: string
+}
 
+export default async function GalleryPage() {
+    const result = (await cloudinary.v2.search
+        .expression('resource_type:image')
+        .sort_by('created_at', 'desc')
+        .max_results(3)
+        .execute()) as { resources: SearchResult[] };
 
-export default function Gallery() {
     return (
         <section>
-            <div className="flex justify-between">
-                <h1 className="text-4xl font-bold">Gallery</h1>
-                <Button variant="outline" >
-                    <div className="flex gap-1">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                            fill="none" viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-6 h-6">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
-                        </svg>
-
-
-                        <CldUploadButton
-                            onUpload={(result: UploadResult | any) => {
-                                //   setimageId(result.info.public_id)
-                            }}
-
-                            uploadPreset="qgwynlxk" />
-                    </div>
-                </Button>
+            <div className="flex flex-col gap-8">
+                <div className="flex justify-between">
+                    <h1 className="text-4xl font-bold">Gallery</h1>
+                    <UplaodButton /></div>
+                <div className="grid grid-cols-4 gap-4">
+                    {result.resources.map(result =>
+                        <CloudinaryImage
+                            key={result.public_id}
+                            src={result.public_id}
+                            width="400"
+                            height="300"
+                            alt="an image of something"
+                        />
+                    )}
+                </div>
             </div>
         </section>
     )

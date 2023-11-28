@@ -1,9 +1,11 @@
 "use client";
 import { Button } from '@/components/ui/button';
+import { AnyMxRecord } from 'dns';
 import { CldImage } from 'next-cloudinary';
 import { CldUploadButton } from 'next-cloudinary';
+import router from 'next/router';
 import { useState } from 'react';
-import { buttonVariants } from "@/components/ui/button"
+
 
 
 export type UploadResult = {
@@ -18,7 +20,7 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button variant="outline" >
+      <Button asChild >
         <div className="flex gap-1">
           <svg xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 24 24"
@@ -33,8 +35,12 @@ export default function Home() {
 
 
           <CldUploadButton
-            onUpload={(result: UploadResult | any) => {
+            onUpload={(result: UploadResult | any ) => {
               //   setimageId(result.info.public_id)
+              // setTimeout(() => {
+              //   console.log("refresh");
+              //   router.reload();
+              // }, 1000)
             }}
 
             uploadPreset="qgwynlxk" />
