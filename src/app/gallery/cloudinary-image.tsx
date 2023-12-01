@@ -1,17 +1,24 @@
 "use client"
 
 import { Heart } from "@/components/ui/icons/heart"
-import { CldImage } from "next-cloudinary"
+import { CldImage, CldImageProps } from "next-cloudinary"
 import cloudinary from "cloudinary"
 import { setAsfavoriteAction } from "./action"
-import { useTransition } from "react"
+import { useState, useTransition } from "react"
 import { SearchResult } from "./page"
 import { FullHeart } from "@/components/ui/icons/ful-heart"
+import path from "path"
 
-export function CloudinaryImage(props: any & {imageData: SearchResult}) {
+export function CloudinaryImage(props:{imageData: SearchResult;  onUnhearted? : ( 
+    unheartedResource : SearchResult
+) => void 
+ } & Omit<CldImageProps, 'src'> ) {
     const [transition, startTransition] = useTransition();
-    const {imageData} = props;
-    const isFavorited = imageData.tags.includes('favorite')
+    const {imageData, onUnhearted} = props;
+   
+    const [isFavorited, setIsFavorited] =useState(
+        imageData.tags.includes('favorite')
+        )
     return (
         <div className="relative">
             <CldImage {...props} src={imageData.public_id} />
@@ -19,6 +26,8 @@ export function CloudinaryImage(props: any & {imageData: SearchResult}) {
                 isFavorited ? (
                 <FullHeart
                 onClick={() => {
+                    onUnhearted?.(imageData)
+                    setIsFavorited(false)
                     startTransition(() => {
                         setAsfavoriteAction(imageData.public_id, false)
                     })
@@ -28,6 +37,7 @@ export function CloudinaryImage(props: any & {imageData: SearchResult}) {
                 
                 <Heart
                 onClick={() => {
+                    setIsFavorited(true)
                     startTransition(() => {
                         setAsfavoriteAction(imageData.public_id, true )
                     })
@@ -38,3 +48,5 @@ export function CloudinaryImage(props: any & {imageData: SearchResult}) {
         </div>
     )
 }
+
+
