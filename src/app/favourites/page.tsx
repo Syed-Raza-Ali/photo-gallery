@@ -1,6 +1,6 @@
 
 import cloudinary from 'cloudinary'
-import { CloudinaryImage } from "../gallery/cloudinary-image"
+import { CloudinaryImage } from "../../components/ui/cloudinary-image"
 import { SearchResult } from "../gallery/page";
 import { ForceRefresh } from '@/components/ui/force-refresh';
 import FavoritesList from './favorites-list';

@@ -3,11 +3,12 @@
 import { Heart } from "@/components/ui/icons/heart"
 import { CldImage, CldImageProps } from "next-cloudinary"
 import cloudinary from "cloudinary"
-import { setAsfavoriteAction } from "./action"
+import { setAsfavoriteAction } from "../../app/gallery/action"
 import { useState, useTransition } from "react"
-import { SearchResult } from "./page"
+import { SearchResult } from "../../app/gallery/page"
 import { FullHeart } from "@/components/ui/icons/ful-heart"
 import path from "path"
+import { ImageMenu } from "./image-menu"
 
 export function CloudinaryImage(props:{imageData: SearchResult;  onUnhearted? : ( 
     unheartedResource : SearchResult
@@ -44,7 +45,8 @@ export function CloudinaryImage(props:{imageData: SearchResult;  onUnhearted? : 
                 }}
                 className="absolute top-2 right-2 hover:text-red-500 cursor-pointer" />
             )}
-            
+            <ImageMenu
+            image = {imageData} />
         </div>
     )
 }
