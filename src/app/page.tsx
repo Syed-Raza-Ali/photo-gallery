@@ -37,11 +37,11 @@ export default function Home() {
 
           <CldUploadButton
             onUpload={(result: UploadResult | any ) => {
-              //   setimageId(result.info.public_id)
-              // setTimeout(() => {
-              //   console.log("refresh");
-              //   router.reload();
-              // }, 1000)
+                setimageId(result.info.public_id)
+              setTimeout(() => {
+                console.log("refresh");
+                router.reload();
+              }, 1000)
             }}
 
             uploadPreset="qgwynlxk" />
