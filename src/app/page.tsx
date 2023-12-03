@@ -1,62 +1,46 @@
+import cloudinary from 'cloudinary'
+import GalleryGrid from "./gallery-grid"
+import UplaodButton from "@/components/ui/icons/uplaod-button"
 
-"use client";
-import { Button } from '@/components/ui/button';
-import { AnyMxRecord } from 'dns';
-import { CldImage } from 'next-cloudinary';
-import { CldUploadButton } from 'next-cloudinary';
-import router from 'next/router';
-import { useState } from 'react';
+export type SearchResult = {
+    public_id: string;
+    tags: string[]
 
-
-
-export type UploadResult = {
-  info: {
-    public_id: string
-  },
-  event: 'success'
 }
 
-export default function Home() {
-  const [imageId, setimageId] = useState("");
+export default async function HomePage(
+    { searchParams: { search },
+    }: {
+        searchParams:
+        {
+            search: string
+        }
+    }) {
+    const result = (await cloudinary.v2.search
+        .expression(`resource_type:image ${search ? ` AND tags=${search} ` : ""}`)
+        .sort_by('created_at', 'desc')
+        .with_field("tags")
+        .max_results(50)
+        .execute()) as { resources: SearchResult[] };
 
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <Button asChild >
-        <div className="flex gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg"
-            fill="none" viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 8.25H7.5a2.25 2.25 0 00-2.25 2.25v9a2.25 2.25 0 002.25 2.25h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25H15m0-3l-3-3m0 0l-3 3m3-3V15" />
-          </svg>
+    return (
+        <section>
+            <div className="flex flex-col gap-8">
+                <div className="flex justify-between">
+                    <h1 className="text-4xl font-bold">Home</h1>
+                    <UplaodButton /></div>
 
-
-          <CldUploadButton
-            onUpload={(result: UploadResult | any ) => {
-                setimageId(result.info.public_id)
-              setTimeout(() => {
-                console.log("refresh");
-                router.reload();
-              }, 1000)
-            }}
-
-            uploadPreset="qgwynlxk" />
-        </div>
-      </Button>
-      {imageId && (
-        <CldImage
-          width="500"
-          height="300"
-          src={imageId}
-          sizes="100vw"
-
-          alt="Description of my image"
-        />
-      )}
-    </main>
-  )
+                <GalleryGrid
+                    images={result.resources}
+                />
+                <div className='my-2'>
+                    <p className='font-style: italic'>
+                        "In this gallery, each frame is a universe, a silent masterpiece speaking volumes in visual whispers. Each stroke of color and shadow tells a story, inviting you to interpret the artistry, lose yourself in the emotion, and find beauty in the spaces between. Welcome to a sanctuary where every glance is an exploration, and every piece is a portal into the boundless realms of creativity."</p>
+                    <p className='font-bold text-end '>
+                        Design by : SYED RAZA ALI
+                    </p>
+                </div>
+            </div>
+        </section>
+    )
 }

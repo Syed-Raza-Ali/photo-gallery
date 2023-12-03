@@ -1,4 +1,4 @@
-import { SearchResult } from "@/app/gallery/page"
+import { SearchResult } from "@/app/page"
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
@@ -30,12 +30,12 @@ export function AddtoAlbumDialog({image, onClose, } : {
             }
         }}>
             <DialogTrigger asChild>
-                <Button variant="secondary" className="bg-white">
+                <Button variant="secondary" className="bg-black text-white">
                     <FolderPlus className="mr-2 h-4 w-4 " />
                     <span>Add to Album</span>
                 </Button>
             </DialogTrigger>
-            <DialogContent className="sm:max-w-[425px] bg-white">
+            <DialogContent className="sm:max-w-[425px] bg-black text-white ">
                 <DialogHeader>
                     <DialogTitle>Add to Album</DialogTitle>
                     <DialogDescription>
@@ -62,7 +62,7 @@ export function AddtoAlbumDialog({image, onClose, } : {
                         setOpen(false)
                          await addImageToAlbum(image, albumName)
                     }} 
-                    type="submit" className="border rounded-xl">Add to Album</Button>
+                    type="submit" className="bg-white text-black rounded-xl">Add to Album</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

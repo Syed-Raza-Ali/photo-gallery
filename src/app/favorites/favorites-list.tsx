@@ -1,7 +1,7 @@
 "use client"
 import cloudinary from 'cloudinary'
 import { CloudinaryImage } from "../../components/ui/cloudinary-image"
-import { SearchResult } from "../gallery/page";
+import { SearchResult } from "../page";
 import { ForceRefresh } from '@/components/ui/force-refresh';
 import { useEffect, useState } from 'react';
 import { ImageGrid } from '@/components/ui/image-grid';

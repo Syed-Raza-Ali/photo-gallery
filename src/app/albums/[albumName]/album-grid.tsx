@@ -3,7 +3,7 @@
 
 import { CloudinaryImage } from "../../../components/ui/cloudinary-image"
 import { ImageGrid } from "@/components/ui/image-grid"
-import { SearchResult } from "../../gallery/page";
+import { SearchResult } from "../../page";
 
 
 

@@ -1,5 +1,5 @@
 "use server"
-import { SearchResult } from "@/app/gallery/page"
+import { SearchResult } from "@/app/page"
 import cloudinary from "cloudinary"
 
 export async function addImageToAlbum(image: SearchResult,album : string) {
@@ -11,5 +11,5 @@ await cloudinary.v2.api.create_folder(album)
   }
  const publicId = parts.join("/")
 
-  await cloudinary.v2.uploader.rename(image.public_id, `${album}/${publicId}`)
+  await cloudinary.v2.ader.rename(image.public_id, `${album}/${publicId}`)
 }

@@ -1,17 +1,22 @@
 'use client'
 
 import { CldUploadButton } from "next-cloudinary"
-import { UploadResult } from "../page"
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation";
 
 
+export type UploadResult = {
+    info: {
+      public_id: string
+    },
+    event: 'success'
+  }
 
 export default function UplaodButton() {
     const router = useRouter();
     return (
         <Button asChild >
-            <div className="flex gap-1 bg-black text-white rounded-xl">
+            <div className="flex gap-1 bg-white text-black rounded-xl">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 24 24"
                     strokeWidth={1.5}
@@ -26,7 +31,6 @@ export default function UplaodButton() {
 
                 <CldUploadButton
                     onUpload={(result: UploadResult | any) => {
-                        //   setimageId(result.info.public_id)
                         setTimeout(() => {
                             console.log("refresh");
                             router.refresh();
