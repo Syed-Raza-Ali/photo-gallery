@@ -11,5 +11,5 @@ await cloudinary.v2.api.create_folder(album)
   }
  const publicId = parts.join("/")
 
-  await cloudinary.v2.ader.rename(image.public_id, `${album}/${publicId}`)
+  await cloudinary.v2.uploader.rename(image.public_id, `${album}/${publicId}`)
 }
