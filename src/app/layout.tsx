@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+// import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Heart } from '@/components/ui/icons/heart'
 import Link from 'next/link'

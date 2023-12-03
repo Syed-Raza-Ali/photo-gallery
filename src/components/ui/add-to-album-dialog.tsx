@@ -62,7 +62,7 @@ export function AddtoAlbumDialog({image, onClose, } : {
                         setOpen(false)
                          await addImageToAlbum(image, albumName)
                     }} 
-                    type="submit" className="bg-white text-black rounded-xl">Add to Album</Button>
+                    type="submit" className="text-white border rounded-xl">Add to Album</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

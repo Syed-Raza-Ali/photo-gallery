@@ -16,7 +16,7 @@ export default function UplaodButton() {
     const router = useRouter();
     return (
         <Button asChild >
-            <div className="flex gap-1 bg-white text-black rounded-xl">
+            <div className="flex gap-1 border text-black rounded-xl">
                 <svg xmlns="http://www.w3.org/2000/svg"
                     fill="none" viewBox="0 0 24 24"
                     strokeWidth={1.5}
