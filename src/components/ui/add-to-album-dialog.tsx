@@ -39,6 +39,8 @@ export function AddtoAlbumDialog({image, onClose, } : {
                 <DialogHeader>
                     <DialogTitle>Add to Album</DialogTitle>
                     <DialogDescription>
+                        Note : Please don't use any space between folder name.
+                        
                         Type an album you want to move this image into
                     </DialogDescription>
                 </DialogHeader>
