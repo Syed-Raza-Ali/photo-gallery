@@ -90,43 +90,39 @@ export default function EditPage(
                 )}
 
                 {transformation === 'blur' && (
-                    <CldImage
-                        src={publicId}
-                        width="1200"
-                        height="1400"
-                        blur= "800"
-                        alt="In process..."
-
-                    />
-
+                    <div style={{ filter: 'blur(5px)' }}>
+                        <CldImage
+                            src={publicId}
+                            width="1200"
+                            height="1400"
+                            alt="In process..."
+                        />
+                    </div>
                 )}
-
-
-
 
                 {transformation === 'grayscale' && (
-                    <CldImage
-                        src={publicId}
-                        width="1200"
-                        height="1400"
-                        grayscale
-                        alt="In process..."
-
-                    />
-
+                    <div style={{ filter: 'grayscale(100%)' }}>
+                        <CldImage
+                            src={publicId}
+                            width="1200"
+                            height="1400"
+                            alt="In process..."
+                        />
+                    </div>
                 )}
+
 
                 {transformation === 'pixelate' && (
-                    <CldImage
-                        src={publicId}
-                        width="1200"
-                        height="1400"
-                        pixelate
-                        alt="In process..."
-
-                    />
-
+                    <div style={{ imageRendering: 'pixelated' }}>
+                        <CldImage
+                            src={publicId}
+                            width="1200"
+                            height="1400"
+                            alt="In process..."
+                        />
+                    </div>
                 )}
+
 
                 {transformation === 'bg-remove' && (
                     <CldImage
@@ -141,16 +137,14 @@ export default function EditPage(
 
                 )}
                 {transformation === 'opacity' && (
-                    <CldImage
-                        src={publicId}
-                        width="1200"
-                        height="1400"
-                        opacity= { 50  }
-                        alt="In process..."
-
-                    />
-
-
+                    <div style={{ opacity: 0.5 }}>
+                        <CldImage
+                            src={publicId}
+                            width="1200"
+                            height="1400"
+                            alt="In process..."
+                        />
+                    </div>
                 )}
 
 
