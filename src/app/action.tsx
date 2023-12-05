@@ -1,7 +1,6 @@
 "use server"
 
 import cloudinary from "cloudinary"
-import { revalidatePath } from "next/cache"
 
 export async function setAsfavoriteAction(publicId: string,
     isFavorite: boolean,

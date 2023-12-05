@@ -28,7 +28,7 @@ export default function EditPage(
                     variant="ghost"
                     className="border bg-black text-white rounded-xl"
                     onClick={() => setTransformation(undefined)}>
-                   Remove Changes
+                    Remove Changes
                 </Button>
 
                 <Button
@@ -69,20 +69,20 @@ export default function EditPage(
                     variant="ghost"
                     className="border bg-black text-white rounded-xl"
                     onClick={() => setTransformation("opacity")}>
-                   Low opacity
+                    Low opacity
                 </Button>
             </div>
 
             <div className="grid grid-cols-2 gap-12">
 
-                <CldImage src={publicId} width="300" height="200" alt="some images" />
+                <CldImage src={publicId} width="300" height="200" alt="In process..." />
 
                 {transformation === 'generative-fill' && (
                     <CldImage
                         src={publicId}
                         width="1800"
                         height="1200"
-                        alt="some images"
+                        alt="In process..."
                         crop="fill"
                         fillBackground
                     />
@@ -94,12 +94,15 @@ export default function EditPage(
                         src={publicId}
                         width="1200"
                         height="1400"
-                        blur="800"
-                        alt="some images"
+                        blur= "800"
+                        alt="In process..."
 
                     />
 
                 )}
+
+
+
 
                 {transformation === 'grayscale' && (
                     <CldImage
@@ -107,7 +110,7 @@ export default function EditPage(
                         width="1200"
                         height="1400"
                         grayscale
-                        alt="some images"
+                        alt="In process..."
 
                     />
 
@@ -119,7 +122,7 @@ export default function EditPage(
                         width="1200"
                         height="1400"
                         pixelate
-                        alt="some images"
+                        alt="In process..."
 
                     />
 
@@ -131,23 +134,23 @@ export default function EditPage(
                         width="1200"
                         height="1400"
                         removeBackground
-                        alt="some images"
+                        alt="In process..."
 
                     />
 
-                    
+
                 )}
-  {transformation === 'opacity' && (
+                {transformation === 'opacity' && (
                     <CldImage
                         src={publicId}
                         width="1200"
                         height="1400"
-                        opacity="50"
-                        alt="some images"
+                        opacity= { 50  }
+                        alt="In process..."
 
                     />
 
-                    
+
                 )}
 
 

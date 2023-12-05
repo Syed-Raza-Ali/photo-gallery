@@ -2,7 +2,6 @@
 import cloudinary from 'cloudinary'
 import { CloudinaryImage } from "../../components/ui/cloudinary-image"
 import { SearchResult } from "../page";
-import { ForceRefresh } from '@/components/ui/force-refresh';
 import { useEffect, useState } from 'react';
 import { ImageGrid } from '@/components/ui/image-grid';
 
@@ -31,7 +30,7 @@ export default function FavoritesList({
                         imageData={imageData}
                         width="400"
                         height="300"
-                        alt="an image of something"
+                        alt="Loading Image"
                         onUnhearted={(unheartedResource) => {
                             setResouces((currentResources) =>
                                 currentResources.filter(

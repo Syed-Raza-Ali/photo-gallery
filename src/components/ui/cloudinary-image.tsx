@@ -2,12 +2,10 @@
 
 import { Heart } from "@/components/ui/icons/heart"
 import { CldImage, CldImageProps } from "next-cloudinary"
-import cloudinary from "cloudinary"
 import { setAsfavoriteAction } from "../../app/action"
 import { useState, useTransition } from "react"
 import { SearchResult } from "../../app/page"
 import { FullHeart } from "@/components/ui/icons/ful-heart"
-import path from "path"
 import { ImageMenu } from "./image-menu"
 
 export function CloudinaryImage(props:{imageData: SearchResult;  onUnhearted? : ( 

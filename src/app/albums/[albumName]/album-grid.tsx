@@ -21,7 +21,7 @@ export default  function AlbumGrid({images} : {images : SearchResult[]}) {
                                 imageData={imageData}
                                 width="400"
                                 height="300"
-                                alt="an image of something"
+                                alt="Loading Image"
                             />
                         );
                     }}
